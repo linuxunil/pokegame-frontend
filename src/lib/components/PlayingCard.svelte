@@ -9,6 +9,7 @@
 			sprite: ''
 		}
 	]);
+
 	onMount(async () => {
     //console.log(props.endpoint + "/pokemon");
 		let response = await fetch(props.endpoint + `/pokemon/${props.ndex}`);
@@ -18,7 +19,7 @@
 	});
 </script>
 
-<div class="max-w-sm overflow-hidden rounded shadow-lg">
+<div class="max-w-2xs overflow-hidden rounded shadow-lg" onclick={...props}>
 	<img class="w-full" src={pokemon.sprite} alt={pokemon.name} />
 	<div class="px-6 py-4">
 		<div class="mb-2 text-xl font-bold">{pokemon.name}</div>
@@ -26,16 +27,13 @@
 	<div class="px-6 pt-4 pb-2">
 		<span
 			class="mr-2 mb-2 inline-block rounded-full bg-gray-200 px-3 py-1 text-sm font-semibold text-gray-700"
-			>#photography</span
-		>
+			>#photography</span>
 		<span
 			class="mr-2 mb-2 inline-block rounded-full bg-gray-200 px-3 py-1 text-sm font-semibold text-gray-700"
-			>#travel</span
-		>
+			>#travel</span>
 		<span
 			class="mr-2 mb-2 inline-block rounded-full bg-gray-200 px-3 py-1 text-sm font-semibold text-gray-700"
-			>#winter</span
-		>
+			>#winter</span>
 	</div>
 </div>
 
