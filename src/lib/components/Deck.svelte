@@ -5,15 +5,34 @@
 	let props = $props();
 
 	let pokedex = $state();
+	let score = $state(0);
+	let highScore = $state(0);
 
 	onMount(async () => {
 		let response = await fetch(props.endpoint + '/pokemon');
 		pokedex = await response.json();
 	});
 
-	function checkSelected(ndex) {}
+	function shuffleDeck() {
+		for (let i = pokedex.length - 1; i > 0; i--) {
+			let j = Math.floor(Math.random() * (i + 1));
+			[pokedex[i], pokedex[j]] = [pokedex[j], pokedex[i]];
+		}
+	}
+	function resetGame() {
+		if (score > highScore) {
+			score = highScore;
+		}
+		score = 0;
+	}
 	function cardSelect(event, ndex) {
-		console.log(ndex);
+		if (selected.includes(ndex)) {
+			resetGame();
+		} else {
+			selected.push(ndex);
+			score += 1;
+			shuffleDeck();
+		}
 	}
 </script>
 
