@@ -1,5 +1,8 @@
 <script>
-  import Deck from '$lib/components/Deck.svelte';
+	import Deck from '$lib/components/Deck.svelte';
+	import { scoreBoard } from '$lib/components/shared.svelte';
 </script>
 
-<Deck endpoint="http://localhost:8000"/>
+<p>High Score: {scoreBoard.high}</p>
+<p>Score: {scoreBoard.score}</p>
+<Deck endpoint="http://localhost:8000" />

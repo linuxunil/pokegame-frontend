@@ -1,12 +1,11 @@
 <script>
 	import PlayingCard from '$lib/components/PlayingCard.svelte';
 	import { onMount } from 'svelte';
-	import { selected } from '$lib/components/shared.svelte.js';
+	import { scoreBoard } from '$lib/components/shared.svelte.js';
 	let props = $props();
 
 	let pokedex = $state();
-	let score = $state(0);
-	let highScore = $state(0);
+	let selected = $state([]);
 
 	onMount(async () => {
 		let response = await fetch(props.endpoint + '/pokemon');
@@ -20,17 +19,18 @@
 		}
 	}
 	function resetGame() {
-		if (score > highScore) {
-			score = highScore;
-		}
-		score = 0;
+		scoreBoard.score = 0;
+		selected = [];
 	}
 	function cardSelect(event, ndex) {
 		if (selected.includes(ndex)) {
 			resetGame();
 		} else {
 			selected.push(ndex);
-			score += 1;
+			scoreBoard.score += 1;
+			if (scoreBoard.score > scoreBoard.high) {
+				scoreBoard.high = scoreBoard.score;
+			}
 			shuffleDeck();
 		}
 	}
