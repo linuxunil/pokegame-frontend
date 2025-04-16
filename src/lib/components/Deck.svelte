@@ -1,5 +1,5 @@
 <script>
-	import PlayingCard from '$lib/components/PlayingCard.svelte';
+
 </script>
 
 <PlayingCard endpoint="http://localhost:8000" ndex="1" />

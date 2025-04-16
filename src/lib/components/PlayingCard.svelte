@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	let data = $state();
 	let props = $props();
+
 	let pokemon = $state([
 		{
 			name: '',
@@ -9,11 +10,11 @@
 		}
 	]);
 	onMount(async () => {
-		let resposne = await fetch(props.endpoint);
-		data = await resposne.json();
+    //console.log(props.endpoint + "/pokemon");
+		let response = await fetch(props.endpoint + `/pokemon/${props.ndex}`);
+		data = await response.json();
 		pokemon.name = data.name;
-		pokemon.sprite = data.sprites.other['official-artwork'].front_default;
-		console.log(data.name);
+    pokemon.sprite = props.endpoint + `/sprite/${data.ndex}.png`
 	});
 </script>
 
