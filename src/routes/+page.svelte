@@ -1,2 +1,5 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<script>
+	import PlayingCard from '$lib/components/PlayingCard.svelte';
+</script>
+
+<PlayingCard endpoint="https://pokeapi.co/api/v2/pokemon/ditto" />
