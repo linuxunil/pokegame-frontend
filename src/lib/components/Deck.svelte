@@ -1,6 +1,17 @@
 <script>
+import PlayingCard from "$lib/components/PlayingCard.svelte";
+import {onMount } from 'svelte';
+let props = $props();
 
+let pokedex = $state();
+onMount(async() => {
+  let response = await fetch(props.endpoint + '/pokemon');
+  pokedex = await response.json();
+})
 </script>
 
-<PlayingCard endpoint="http://localhost:8000" ndex="1" />
-<PlayingCard endpoint="http://localhost:8000" ndex="2" />
+<div>
+  {#each pokedex as pokemon}
+  <PlayingCard endpoint={props.endpoint} ndex={pokemon['ndex']} />
+{/each}
+  </div>
