@@ -18,10 +18,12 @@
 			[pokedex[i], pokedex[j]] = [pokedex[j], pokedex[i]];
 		}
 	}
+
 	function resetGame() {
 		scoreBoard.score = 0;
 		selected = [];
 	}
+
 	function cardSelect(event, ndex) {
 		if (selected.includes(ndex)) {
 			resetGame();
