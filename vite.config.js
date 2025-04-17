@@ -30,16 +30,4 @@ export default defineConfig({
 			}
 		]
 	},
- server: {
-    watch: {
-      usePolling: true,
-      ignored: ['**/node_modules/**']
-    },
-    host: "0.0.0.0",
-    port: 3000,
-    strictPort: true,
-    hmr: {
-      host: "0.0.0.0", // 👈 Ensure WebSockets connect correctly
-      protocol: "ws", // 👈 WebSocket Protocol (not HTTP)
-    }
-}});
+});
